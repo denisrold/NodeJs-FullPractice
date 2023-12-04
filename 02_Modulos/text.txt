@@ -1,0 +1,19 @@
+// formato common JS 
+module.exports = objeto = {
+    tuki:tuki,
+    ruki:ruki
+}
+// const fs = require("fs");
+
+formato EcmaScript
+export const objeto = {
+    tuki:tuki,
+    ruki:ruki
+}
+// import { readFile } from 'fs'; 
+extension mjs --> para cuando no tengo package json y tengo que designar la extension para poder exportar de dorma EcmaScriptModules.
+tambien se puede usar para saber que archivos tengo con este tipo de modulacion 
+tambien son reconocidos como archivos javascript por el navegador.
+osea que lo puedo usar para usar modulos javascript. 
+
+Cuando tengo package Json simplemente tengo que agregar type:'module' para que me reconozca las exportanciones y las importanciones.
