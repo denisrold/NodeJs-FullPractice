@@ -11,6 +11,7 @@ export const objeto = {
     ruki:ruki
 }
 // import { readFile } from 'fs'; 
+
 extension mjs --> para cuando no tengo package json y tengo que designar la extension para poder exportar de dorma EcmaScriptModules.
 tambien se puede usar para saber que archivos tengo con este tipo de modulacion 
 tambien son reconocidos como archivos javascript por el navegador.
