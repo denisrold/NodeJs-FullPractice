@@ -1,5 +1,6 @@
 import { createInterface } from "readline";
 import chalk from "chalk";
+import { transcode } from "buffer";
 
 //Guardo las tareas
 const tasks = [];
@@ -21,13 +22,30 @@ ${chalk.blueBright.bold("Menu de opciones:")}
  `);
 }
 
+function addTask() {
+  rl.question(
+    chalk.bgMagentaBright.bold("Escribe la nueva tarea: "),
+    (task) => {
+      tasks.push({ task: task, complete: false });
+      console.log(
+        chalk.green.bold(`Tarea agregada con éxito!
+      `)
+      );
+      displayMenu();
+      chooseOption();
+      console.log(tasks);
+    }
+  );
+}
+
 function chooseOption() {
   rl.question("Digita el número de tu opcion: ", (choice) => {
     switch (choice) {
       case "1":
-        console.log(`
-Crear Tarea
-`);
+        //         console.log(`
+        // Crear Tarea
+        // `);
+        addTask();
         break;
       case "2":
         console.log(`
