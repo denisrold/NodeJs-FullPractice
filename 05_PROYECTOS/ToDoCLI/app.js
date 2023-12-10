@@ -48,6 +48,33 @@ function listTask() {
   chooseOption();
 }
 
+function completeTask() {
+  if (!tasks.length) {
+    console.log(chalk.bgCyanBright.bold(`No hay tareas para completar.\n`));
+    displayMenu();
+    chooseOption();
+  } else {
+    rl.question(
+      chalk.bgMagentaBright.bold("Digíta el número de la tarea a completar: "),
+      (num) => {
+        const index = parseInt(num) - 1;
+        if (!tasks[index] || index < 0 || index > tasks.length) {
+          console.log(chalk.bgRed("La tarea ingresada es inválida!\n"));
+          displayMenu();
+          chooseOption();
+        } else if (tasks[index].complete) {
+          console.log(chalk.bgRed("Esa tarea ya está completa!\n"));
+          displayMenu();
+          chooseOption();
+        } else {
+          tasks[index].complete = true;
+          listTask();
+        }
+      }
+    );
+  }
+}
+
 function chooseOption() {
   rl.question("Digita el número de tu opcion: ", (choice) => {
     switch (choice) {
@@ -56,10 +83,10 @@ function chooseOption() {
         break;
       case "2":
         listTask();
+
         break;
       case "3":
-        console.log(`
-Completar Tarea\n`);
+        completeTask();
         break;
 
       case "4":
