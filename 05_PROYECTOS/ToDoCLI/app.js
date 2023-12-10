@@ -1,6 +1,5 @@
 import { createInterface } from "readline";
 import chalk from "chalk";
-import { transcode } from "buffer";
 
 //Guardo las tareas
 const tasks = [];
@@ -13,56 +12,59 @@ const rl = createInterface({
 });
 
 function displayMenu() {
-  console.log(`${chalk.yellow.bold("🐶🐶🐶🐶 To Do App! 🐶🐶🐶🐶")})
+  console.log(`${chalk.yellow.bold("🐶🐶🐶🐶 To Do App! 🐶🐶🐶🐶")}
 ${chalk.blueBright.bold("Menu de opciones:")}
-1-Agregar tarea
-2-Listar tareas
-3-Completar tareas
-4-Salir"
- `);
+1-Agregar tarea\n2-Listar tareas\n3-Completar tareas\n4-Salir"\n`);
 }
 
 function addTask() {
   rl.question(
-    chalk.bgMagentaBright.bold("Escribe la nueva tarea: "),
+    chalk.bgMagentaBright.bold("Escribe la nueva tarea: \n"),
     (task) => {
       tasks.push({ task: task, complete: false });
-      console.log(
-        chalk.green.bold(`Tarea agregada con éxito!
-      `)
-      );
+      console.log(chalk.green.bold(`Tarea agregada con éxito! \n`));
       displayMenu();
       chooseOption();
-      console.log(tasks);
     }
   );
+}
+
+function listTask() {
+  console.log(chalk.yellow.bold("\n🐶🐶🐶🐶Lista de tareas! 🐶🐶🐶🐶\n"));
+  if (!tasks.length) {
+    console.log(chalk.bgCyanBright.bold(`No hay tareas para mostrar.\n`));
+  } else {
+    tasks.forEach((task, i) => {
+      let status = task.complete ? "✔️" : "❌";
+      if (task.complete) {
+        console.log(chalk.green.bold(`${i + 1}.${status} - ${task.task}`));
+      } else {
+        console.log(chalk.red.bold(`${i + 1}.${status} - ${task.task}`));
+      }
+    });
+    console.log(` `);
+  }
+  displayMenu();
+  chooseOption();
 }
 
 function chooseOption() {
   rl.question("Digita el número de tu opcion: ", (choice) => {
     switch (choice) {
       case "1":
-        //         console.log(`
-        // Crear Tarea
-        // `);
         addTask();
         break;
       case "2":
-        console.log(`
-"Listar Tareas"
-`);
-
+        listTask();
         break;
       case "3":
         console.log(`
-Completar Tarea
-`);
+Completar Tarea\n`);
         break;
 
       case "4":
         console.log(`
-${chalk.yellowBright("Adiós 👋🐶")}
-`);
+${chalk.yellowBright("Adiós 👋🐶")} \n`);
         rl.close();
         break;
       default:
