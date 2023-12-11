@@ -1,3 +1,4 @@
+import { loadTask } from "./loadTask.js";
 async function deletedTask(DB_FILE, tasks, chalk, writeFileSync, index) {
   const data = await tasks.filter((task) => {
     if (task.task === tasks[index].task) {
@@ -38,7 +39,16 @@ export async function deleteTask(
         if (!tasks[index] || index < 0 || index > tasks.length) {
           console.log(chalk.bgRed("La tarea ingresada es inválida!"));
           console.log(chalk.bold("por favor, ingrese un número válido!\n"));
-          deleteTask(rl, chalk, tasks, displayMenu, listTask, chooseOption);
+          deleteTask(
+            rl,
+            chalk,
+            tasks,
+            displayMenu,
+            listTask,
+            chooseOption
+          ).then(() => {
+            loadTask(DB_FILE, readFileSync, tasks);
+          });
         } else {
           deletedTask(DB_FILE, tasks, chalk, writeFileSync, index).then(() => {
             displayMenu(chalk);

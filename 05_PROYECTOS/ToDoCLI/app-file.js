@@ -6,6 +6,7 @@ import addTask from "./modules/addTask.js";
 import { listTask } from "./modules/listTask.js";
 import { completeTask } from "./modules/completeTask.js";
 import { deleteTask } from "./modules/deleteTask.js";
+import { loadTask } from "./modules/loadTask.js";
 
 //Guardo las tareas
 const tasks = [];
@@ -17,24 +18,24 @@ const rl = createInterface({
   output: process.stdout,
 });
 
-function loadTask() {
-  try {
-    const data = readFileSync(DB_FILE, "utf-8");
-    const lines = data.split("\n");
-    tasks.length = 0;
+// function loadTask() {
+//   try {
+//     const data = readFileSync(DB_FILE, "utf-8");
+//     const lines = data.split("\n");
+//     tasks.length = 0;
 
-    lines.forEach((line) => {
-      if (line.trim() !== "") {
-        const [task, complete] = line.split("|");
-        const completed = complete === "true" ? true : false;
-        tasks.push({ task, complete: completed });
-      }
-    });
-    console.log(chalk.green.bold("Tareas Cargadas desde la base de datos"));
-  } catch (err) {
-    console.log(chalk.green.bold("No hay tareas por hacer\n"));
-  }
-}
+//     lines.forEach((line) => {
+//       if (line.trim() !== "") {
+//         const [task, complete] = line.split("|");
+//         const completed = complete === "true" ? true : false;
+//         tasks.push({ task, complete: completed });
+//       }
+//     });
+//     console.log(chalk.green.bold("Tareas Cargadas desde la base de datos"));
+//   } catch (err) {
+//     console.log(chalk.green.bold("No hay tareas por hacer\n"));
+//   }
+// }
 
 function chooseOption() {
   rl.question("Digita el número de tu opcion: ", (choice) => {
@@ -44,7 +45,17 @@ function chooseOption() {
 
         break;
       case "2":
-        listTask(chalk, tasks, displayMenu, chooseOption);
+        listTask(
+          chalk,
+          tasks,
+          displayMenu,
+          chooseOption,
+          DB_FILE,
+          readFileSync
+        ).then(() => {
+          displayMenu(chalk);
+          chooseOption();
+        });
 
         break;
       case "3":
@@ -69,7 +80,8 @@ function chooseOption() {
           listTask,
           chooseOption,
           DB_FILE,
-          writeFileSync
+          writeFileSync,
+          readFileSync
         );
         break;
       case "5":
@@ -86,6 +98,6 @@ ${chalk.red.bold("Opción inválida, intente nuevamente. \n")}`);
     }
   });
 }
-loadTask();
+loadTask(DB_FILE, readFileSync, tasks, chalk);
 displayMenu(chalk);
 chooseOption();

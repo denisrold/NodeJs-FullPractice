@@ -1,5 +1,14 @@
-export function listTask(chalk, tasks, displayMenu, chooseOption) {
+import { loadTask } from "./loadTask.js";
+export async function listTask(
+  chalk,
+  tasks,
+  displayMenu,
+  chooseOption,
+  DB_FILE,
+  readFileSync
+) {
   console.log(chalk.yellow.bold("\n🐶🐶🐶🐶Lista de tareas! 🐶🐶🐶🐶\n"));
+  await loadTask(DB_FILE, readFileSync, tasks, chalk);
   if (!tasks.length) {
     console.log(chalk.bgCyanBright.bold(`No hay tareas para mostrar.\n`));
   } else {
@@ -13,6 +22,4 @@ export function listTask(chalk, tasks, displayMenu, chooseOption) {
     });
     console.log(` `);
   }
-  displayMenu(chalk);
-  chooseOption();
 }

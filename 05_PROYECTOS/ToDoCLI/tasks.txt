@@ -1,4 +1,3 @@
 nueva tarea 1|true
 nueva tarea 2|true
-nueva tarea 3|false
 nueva tarea 4|false
