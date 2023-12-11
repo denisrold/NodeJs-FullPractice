@@ -24,8 +24,9 @@ function loadTask() {
 
     lines.forEach((line) => {
       if (line.trim() !== "") {
-        const [task, completed] = line.split("|");
-        tasks.push({ task, completed: completed === true });
+        const [task, complete] = line.split("|");
+        const completed = complete === "true" ? true : false;
+        tasks.push({ task, complete: completed });
       }
     });
     console.log(chalk.green.bold("Tareas Cargadas desde la base de datos"));
@@ -72,7 +73,6 @@ ${chalk.red.bold("Opción inválida, intente nuevamente. \n")}`);
     }
   });
 }
-
 loadTask();
 displayMenu(chalk);
 chooseOption();
