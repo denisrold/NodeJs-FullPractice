@@ -5,10 +5,8 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "dev":"nodemon app.js",
-    "start":"node app.js",
-    "dev-file":"nodemon app-file.js",
-    "start-file":"node app-file.js"
+    "dev":"nodemon appapp-file.js",
+    "start":"node app-file.js"
   },
   "keywords": [],
   "author": "Denis Roldan",

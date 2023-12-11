@@ -5,6 +5,7 @@ import { displayMenu } from "./modules/displayMenu.js";
 import addTask from "./modules/addTask.js";
 import { listTask } from "./modules/listTask.js";
 import { completeTask } from "./modules/completeTask.js";
+import { deleteTask } from "./modules/deleteTask.js";
 
 //Guardo las tareas
 const tasks = [];
@@ -60,8 +61,20 @@ function chooseOption() {
         break;
 
       case "4":
+        deleteTask(
+          rl,
+          chalk,
+          tasks,
+          displayMenu,
+          listTask,
+          chooseOption,
+          DB_FILE,
+          writeFileSync
+        );
+        break;
+      case "5":
         console.log(`
-${chalk.yellowBright("👋🐶 Adiós 👋🐶")} \n`);
+  ${chalk.yellowBright("👋🐶 Adiós 👋🐶")} \n`);
         rl.close();
         break;
       default:
