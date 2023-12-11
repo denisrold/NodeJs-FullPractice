@@ -11,7 +11,7 @@ export async function loadTask(DB_FILE, readFileSync, tasks, chalk) {
         tasks.push({ task, complete: completed });
       }
     });
-    console.log(chalk.blue("Tareas Cargadas desde la base de datos\n"));
+    console.log(chalk.grey("Tareas Cargadas desde la base de datos\n"));
   } catch (err) {
     console.log(chalk.green.bold("No hay tareas por hacer\n"));
   }

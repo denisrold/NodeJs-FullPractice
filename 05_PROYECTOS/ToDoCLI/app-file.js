@@ -1,6 +1,10 @@
+//READLINE
 import { createInterface } from "readline";
+//FILESISTEM
 import { readFileSync, writeFileSync } from "fs";
+
 import chalk from "chalk";
+
 import { displayMenu } from "./modules/displayMenu.js";
 import addTask from "./modules/addTask.js";
 import { listTask } from "./modules/listTask.js";
