@@ -1,3 +1,4 @@
+import { saveTask } from "./saveTask.js";
 export function completeTask(
   rl,
   chalk,
@@ -26,6 +27,7 @@ export function completeTask(
         } else {
           tasks[index].complete = true;
           console.log(chalk.bgGreen("Tarea completada con exito!\n"));
+          saveTask();
           listTask(chalk, tasks, displayMenu, chooseOption);
         }
       }

@@ -1,0 +1,3 @@
+Mi nueva tarea 1|undefined
+Mi nueva tarea 2|undefined
+Mi nueva tarea 3|false
