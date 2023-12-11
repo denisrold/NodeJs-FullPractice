@@ -5,7 +5,9 @@ export function completeTask(
   tasks,
   displayMenu,
   listTask,
-  chooseOption
+  chooseOption,
+  DB_FILE,
+  writeFileSync
 ) {
   if (!tasks.length) {
     console.log(chalk.bgCyanBright.bold(`No hay tareas para completar.\n`));
@@ -26,9 +28,9 @@ export function completeTask(
           chooseOption();
         } else {
           tasks[index].complete = true;
-          console.log(chalk.bgGreen("Tarea completada con exito!\n"));
-          saveTask();
-          listTask(chalk, tasks, displayMenu, chooseOption);
+          saveTask(DB_FILE, tasks, chalk, writeFileSync, true).then(() => {
+            listTask(chalk, tasks, displayMenu, chooseOption);
+          });
         }
       }
     );

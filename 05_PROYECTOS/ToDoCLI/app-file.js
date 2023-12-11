@@ -46,7 +46,16 @@ function chooseOption() {
 
         break;
       case "3":
-        completeTask(rl, chalk, tasks, displayMenu, listTask, chooseOption);
+        completeTask(
+          rl,
+          chalk,
+          tasks,
+          displayMenu,
+          listTask,
+          chooseOption,
+          DB_FILE,
+          writeFileSync
+        );
         break;
 
       case "4":
