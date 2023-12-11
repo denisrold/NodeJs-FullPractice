@@ -18,25 +18,6 @@ const rl = createInterface({
   output: process.stdout,
 });
 
-// function loadTask() {
-//   try {
-//     const data = readFileSync(DB_FILE, "utf-8");
-//     const lines = data.split("\n");
-//     tasks.length = 0;
-
-//     lines.forEach((line) => {
-//       if (line.trim() !== "") {
-//         const [task, complete] = line.split("|");
-//         const completed = complete === "true" ? true : false;
-//         tasks.push({ task, complete: completed });
-//       }
-//     });
-//     console.log(chalk.green.bold("Tareas Cargadas desde la base de datos"));
-//   } catch (err) {
-//     console.log(chalk.green.bold("No hay tareas por hacer\n"));
-//   }
-// }
-
 function chooseOption() {
   rl.question("Digita el número de tu opcion: ", (choice) => {
     switch (choice) {
@@ -98,6 +79,7 @@ ${chalk.red.bold("Opción inválida, intente nuevamente. \n")}`);
     }
   });
 }
-loadTask(DB_FILE, readFileSync, tasks, chalk);
-displayMenu(chalk);
-chooseOption();
+loadTask(DB_FILE, readFileSync, tasks, chalk).then(() => {
+  displayMenu(chalk);
+  chooseOption();
+});
