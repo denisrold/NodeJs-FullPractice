@@ -6,6 +6,7 @@ import imageminSvgo from "imagemin-svgo";
 import imageminWebp from "imagemin-webp";
 import imageminGifsicle from "imagemin-gifsicle";
 import sharp from "sharp";
+import chalk from "chalk";
 
 let inputFolder = "src";
 let outputFolder = "opt";
@@ -36,9 +37,12 @@ const proccessImg = async () => {
           imageminGifsicle(), // compress gif image.
         ],
       });
+      console.log(chalk.blueBright.bold(`The ${file} has been Optimizated!`));
     }
 
-    console.log("The optimization process has successfully finished");
+    console.log(
+      chalk.green.bold("The optimization process has successfully finished!!")
+    );
   } catch (err) {
     console.error(err);
   }
