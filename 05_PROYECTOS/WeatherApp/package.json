@@ -1,0 +1,14 @@
+{
+  "name": "weatherapp",
+  "version": "1.0.0",
+  "description": "This App Provides climatic information that people input",
+  "main": "App.js",
+  "type":"module",
+  "keywords": [],
+  "author": "Denis H. Roldán",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "chalk": "^5.3.0"
+  }
+}
