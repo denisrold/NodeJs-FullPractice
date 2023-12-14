@@ -5,6 +5,15 @@ import { argv } from "process";
 const { green, red, bgWhite, blueBright } = chalk;
 const API_KEY = "d0ff08f536ee9bdbf2d7b9ae4be08b3c";
 
+function getWeather(city) {
+  try {
+    const endpoint = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
+  } catch (err) {
+    console.log(red(err));
+    throw new Error(`It is not possible to get the ${city} information.`);
+  }
+}
+
 function getData() {
   let city = process.argv[2];
   //   console.log({ 1: city });
@@ -23,6 +32,8 @@ function getData() {
       `)
     );
   }
+
+  getWeather.then().catch();
 }
 
 getData();
