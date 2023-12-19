@@ -14,7 +14,6 @@ async function getWeather(city) {
       units: "metric",
     });
 
-    // console.log(response);
     return response.data;
   } catch (err) {
     console.log(red(err));
@@ -66,7 +65,7 @@ function initApp() {
 
   getWeather(city)
     .then((res) => {
-      displayWeather(res.city, res);
+      displayWeather(res.name, res);
     })
     .catch((err) => {
       handleError(err);
