@@ -1,4 +1,3 @@
-import { rmdirSync } from "fs";
 import { createServer } from "http";
 import { get } from "https";
 const hostname = "localhost",
