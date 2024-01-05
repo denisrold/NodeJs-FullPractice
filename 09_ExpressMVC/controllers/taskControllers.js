@@ -10,6 +10,7 @@ let tasks = [
 const getAllTasks = (req, res) => {};
 
 const getAddTaskForm = (req, res) => {};
+const addTask = (req, res) => {};
 
 const editTaskForm = (req, res) => {};
 
@@ -24,6 +25,7 @@ const deleteTask = (req, res) => {};
 export default {
   getAllTasks,
   getAddTaskForm,
+  addTask,
   editTask,
   editTaskForm,
   completeTask,
