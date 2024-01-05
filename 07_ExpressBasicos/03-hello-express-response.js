@@ -22,6 +22,7 @@ app.get("/archivo", (req, res) => {
 });
 
 //COMO MANEJAR PLANTILLAS CON EXPRESS.
+//No funciona esta ruta porque hay que configurarla y especificar el motor de plantillas a express
 // app.get("/plantilla", (req, res) => {
 //   res.render("plantilla");
 // });
