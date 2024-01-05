@@ -1,0 +1,36 @@
+crear archivos 
+type js > 01.js
+
+borrar archivo  
+rm 01.js
+
+mover archivo
+move rutaorigenoarchivo rutadestino
+
+Editar un archivo
+ren nombrearchivocarpeta nuevonombre
+
+
+public ->  para todo lo que necesite para el frontend ejemplo
+Dentro de public:
+hojas de estilo /css
+imagenes /img
+archivos javascript. / js
+
+
+
+En carpeta principal:
+VIEWS:
+layout.pug : Template Engine // Base del documento html. 
+index.pug // home
+add.pug // form de agregar tarea
+edit.pug // form de edicion
+error.pug // manejo de errores
+
+
+carpeta controllers desde la raiz: 
+LOGICA PARA LAS TAREAS
+taskControllers.js
+
+
+La carpeta modelos(Que refiere a la base de datos.) ->  sera simulada desde el archivo controladores. 
