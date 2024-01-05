@@ -4,6 +4,7 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import taskController from "./controllers/taskControllers.js";
+import errorController from "./controllers/errorControllers.js";
 
 //configuracion de carpeta de directorio.
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
@@ -31,6 +32,9 @@ app.post("/edit/:id", taskController.editTask);
 app.get("/complete/:id", taskController.completeTask);
 app.get("/uncomplete/:id", taskController.uncompleteTask);
 app.get("/delete/:id", taskController.deleteTask);
+
+//Error 404;
+app.use(errorController.error404());
 
 app.listen(port, () => {
   console.log(`Listen on http://localhost:${port}`);
