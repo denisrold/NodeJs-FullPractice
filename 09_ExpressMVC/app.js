@@ -18,6 +18,11 @@ app.use(cors());
 app.use(helmet());
 app.use(morgan("dev"));
 
+//definir direccion de Motor de plantillas :
+app.set("views", path.join(__dirname, "views"));
+//Por esta linea de codigo es que no necesito importar pug.o unjunks o ejs o el motor de plantillas que use.
+app.set("view engine", "pug");
+
 //configuracion publica concatenacion
 app.use(express.static(path.join(__dirname, "public")));
 
