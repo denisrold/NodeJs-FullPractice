@@ -1,7 +1,7 @@
 extends layout 
 block content
     main.container
-        h1.text-center=title 
+        h1.title.text-center=title 
         a.add-button( href=`/add`) Agregar Tarea
         ul.task-list
             if tasks.length === 0

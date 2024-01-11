@@ -14,8 +14,15 @@ const getAllTasks = (req, res) => {
   });
 };
 
-const getAddTaskForm = (req, res) => {};
-const addTask = (req, res) => {};
+const getAddTaskForm = (req, res) => {
+  res.render("add", { title: "Agregar Tarea" });
+};
+const addTask = (req, res) => {
+  let { title } = req.body;
+  let id = tasks.length + 1;
+  tasks.push({ id, title, completed: false });
+  res.redirect("/");
+};
 
 const editTaskForm = (req, res) => {};
 
