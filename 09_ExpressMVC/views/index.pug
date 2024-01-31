@@ -12,7 +12,7 @@ block content
                     li(class=task.completed ? "completed":"")
                         a(class="link" href=`/edit/${task.id}`) #{task.title}
                         if task.completed
-                            a.uncomplete-button(href=`/uncompleted/${task.id}`) Desmarcar
+                            a.uncomplete-button(href=`/uncomplete/${task.id}`) Desmarcar
                         else 
-                            a.complete-button( href=`/completed/${task.id}`) Marcar
+                            a.complete-button( href=`/complete/${task.id}`) Marcar
                         a.delete-button( href=`/delete/${task.id}`) Eliminar
